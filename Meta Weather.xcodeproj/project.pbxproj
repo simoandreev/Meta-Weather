@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D16EF8C422D92BA4006EA27B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16EF8C322D92BA4006EA27B /* AppDelegate.swift */; };
-		D16EF8C622D92BA4006EA27B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16EF8C522D92BA4006EA27B /* ViewController.swift */; };
+		D16EF8C622D92BA4006EA27B /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16EF8C522D92BA4006EA27B /* HomeTableViewController.swift */; };
 		D16EF8C922D92BA4006EA27B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D16EF8C722D92BA4006EA27B /* Main.storyboard */; };
 		D16EF8CC22D92BA4006EA27B /* Meta_Weather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D16EF8CA22D92BA4006EA27B /* Meta_Weather.xcdatamodeld */; };
 		D16EF8CE22D92BA5006EA27B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D16EF8CD22D92BA5006EA27B /* Assets.xcassets */; };
@@ -18,7 +18,7 @@
 /* Begin PBXFileReference section */
 		D16EF8C022D92BA4006EA27B /* Meta Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meta Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16EF8C322D92BA4006EA27B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D16EF8C522D92BA4006EA27B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D16EF8C522D92BA4006EA27B /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		D16EF8C822D92BA4006EA27B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D16EF8CB22D92BA4006EA27B /* Meta_Weather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Meta_Weather.xcdatamodel; sourceTree = "<group>"; };
 		D16EF8CD22D92BA5006EA27B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				D16EF8C322D92BA4006EA27B /* AppDelegate.swift */,
-				D16EF8C522D92BA4006EA27B /* ViewController.swift */,
+				D16EF8C522D92BA4006EA27B /* HomeTableViewController.swift */,
 				D16EF8C722D92BA4006EA27B /* Main.storyboard */,
 				D16EF8CD22D92BA5006EA27B /* Assets.xcassets */,
 				D16EF8CF22D92BA5006EA27B /* LaunchScreen.storyboard */,
@@ -139,7 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D16EF8CC22D92BA4006EA27B /* Meta_Weather.xcdatamodeld in Sources */,
-				D16EF8C622D92BA4006EA27B /* ViewController.swift in Sources */,
+				D16EF8C622D92BA4006EA27B /* HomeTableViewController.swift in Sources */,
 				D16EF8C422D92BA4006EA27B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
