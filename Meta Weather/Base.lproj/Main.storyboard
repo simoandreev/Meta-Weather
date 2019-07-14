@@ -41,10 +41,10 @@
             </objects>
             <point key="canvasLocation" x="1002.8985507246377" y="134.59821428571428"/>
         </scene>
-        <!--Week Days Info Table View Controller-->
+        <!--Template Info Table View Controller-->
         <scene sceneID="hHq-uO-Pwr">
             <objects>
-                <tableViewController restorationIdentifier="days" id="uLb-Dn-7EB" customClass="WeekDaysInfoTableViewController" customModule="Meta_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="days" id="uLb-Dn-7EB" customClass="TemplateInfoTableViewController" customModule="Meta_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Tb2-yI-FjM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,10 +62,10 @@
             </objects>
             <point key="canvasLocation" x="1882.608695652174" y="142.63392857142856"/>
         </scene>
-        <!--Week Days Info Table View Controller-->
+        <!--Template Info Table View Controller-->
         <scene sceneID="eWu-rr-ZmR">
             <objects>
-                <tableViewController restorationIdentifier="hours" id="w68-Wm-YKR" customClass="WeekDaysInfoTableViewController" customModule="Meta_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="hours" id="w68-Wm-YKR" customClass="TemplateInfoTableViewController" customModule="Meta_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3U7-w4-mc1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,7 +78,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vGf-Nd-suh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2706" y="143"/>
+            <point key="canvasLocation" x="2705.7971014492755" y="142.63392857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="plq-67-hQA">

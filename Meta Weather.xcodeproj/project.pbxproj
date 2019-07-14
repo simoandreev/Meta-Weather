@@ -14,7 +14,7 @@
 		D16EF8CE22D92BA5006EA27B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D16EF8CD22D92BA5006EA27B /* Assets.xcassets */; };
 		D16EF8D122D92BA5006EA27B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D16EF8CF22D92BA5006EA27B /* LaunchScreen.storyboard */; };
 		D16EF8DB22D9308F006EA27B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16EF8DA22D9308F006EA27B /* Location.swift */; };
-		D16EF8DD22D9344B006EA27B /* WeekDaysInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16EF8DC22D9344B006EA27B /* WeekDaysInfoTableViewController.swift */; };
+		D16EF8DD22D9344B006EA27B /* TemplateInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16EF8DC22D9344B006EA27B /* TemplateInfoTableViewController.swift */; };
 		D1F590C722DA7207000183CD /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F590C622DA7207000183CD /* ApiService.swift */; };
 		D1F590CA22DA92BB000183CD /* DefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F590C822DA92BB000183CD /* DefaultTableViewCell.swift */; };
 		D1F590CB22DA92BB000183CD /* DefaultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1F590C922DA92BB000183CD /* DefaultTableViewCell.xib */; };
@@ -30,7 +30,7 @@
 		D16EF8D022D92BA5006EA27B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D16EF8D222D92BA5006EA27B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D16EF8DA22D9308F006EA27B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		D16EF8DC22D9344B006EA27B /* WeekDaysInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDaysInfoTableViewController.swift; sourceTree = "<group>"; };
+		D16EF8DC22D9344B006EA27B /* TemplateInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateInfoTableViewController.swift; sourceTree = "<group>"; };
 		D1F590C622DA7207000183CD /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		D1F590C822DA92BB000183CD /* DefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewCell.swift; sourceTree = "<group>"; };
 		D1F590C922DA92BB000183CD /* DefaultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultTableViewCell.xib; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				D16EF8C522D92BA4006EA27B /* HomeTableViewController.swift */,
-				D16EF8DC22D9344B006EA27B /* WeekDaysInfoTableViewController.swift */,
+				D16EF8DC22D9344B006EA27B /* TemplateInfoTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -192,7 +192,7 @@
 				D16EF8C422D92BA4006EA27B /* AppDelegate.swift in Sources */,
 				D1F590CA22DA92BB000183CD /* DefaultTableViewCell.swift in Sources */,
 				D1F590C722DA7207000183CD /* ApiService.swift in Sources */,
-				D16EF8DD22D9344B006EA27B /* WeekDaysInfoTableViewController.swift in Sources */,
+				D16EF8DD22D9344B006EA27B /* TemplateInfoTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

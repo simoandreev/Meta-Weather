@@ -21,13 +21,15 @@ class DefaultTableViewCell: UITableViewCell {
 				   conditionField: String?,
 				   maxTempField: String?,
 				   minTempField: String?,
-				   windSpeedField: String?) {
+				   windSpeedField: String?,
+				   weatherConditionImage: UIImage?) {
 		
 		self.dateField.text = dateField
 		self.conditionField.text = conditionField
 		self.maxTempField.text = maxTempField
 		self.minTempField.text = minTempField
 		self.windSpeedField.text = windSpeedField
+		self.weatherConditionImageView.image = weatherConditionImage
 	}
     
 }

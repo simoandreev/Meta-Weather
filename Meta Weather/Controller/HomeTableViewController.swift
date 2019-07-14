@@ -40,8 +40,9 @@ class HomeTableViewController: UITableViewController {
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == weekDaysSegue {
-			let viewController:WeekDaysInfoTableViewController = segue.destination as! WeekDaysInfoTableViewController
-			viewController.city = sender as? Location
+			let viewController:TemplateInfoTableViewController = segue.destination as! TemplateInfoTableViewController
+			viewController.location = sender as? Location
+			viewController.navigationItem.title = (sender as? Location)?.title
 			
 		}
 	}
