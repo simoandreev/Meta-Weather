@@ -33,10 +33,52 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Select a city" largeTitleDisplayMode="always" id="Uqq-u5-zzH"/>
+                    <connections>
+                        <segue destination="uLb-Dn-7EB" kind="show" identifier="showWeekDaysInfo" id="iXf-XW-E3L"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tPc-Gm-H5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1002.8985507246377" y="134.59821428571428"/>
+        </scene>
+        <!--Week Days Info Table View Controller-->
+        <scene sceneID="hHq-uO-Pwr">
+            <objects>
+                <tableViewController restorationIdentifier="days" id="uLb-Dn-7EB" customClass="WeekDaysInfoTableViewController" customModule="Meta_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Tb2-yI-FjM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="uLb-Dn-7EB" id="Zhh-Lm-RUc"/>
+                            <outlet property="delegate" destination="uLb-Dn-7EB" id="bxb-Y8-GCt"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="w68-Wm-YKR" kind="show" identifier="showHour" id="sFI-bp-f1p"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m6P-VI-nQM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1882.608695652174" y="142.63392857142856"/>
+        </scene>
+        <!--Week Days Info Table View Controller-->
+        <scene sceneID="eWu-rr-ZmR">
+            <objects>
+                <tableViewController restorationIdentifier="hours" id="w68-Wm-YKR" customClass="WeekDaysInfoTableViewController" customModule="Meta_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3U7-w4-mc1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="w68-Wm-YKR" id="7ww-Vp-3hF"/>
+                            <outlet property="delegate" destination="w68-Wm-YKR" id="wvr-xF-225"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vGf-Nd-suh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2706" y="143"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="plq-67-hQA">
