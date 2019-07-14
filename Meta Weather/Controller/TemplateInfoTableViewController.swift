@@ -42,31 +42,32 @@ class TemplateInfoTableViewController: UITableViewController {
 	
 	private func fetchData() {
 		if currentViewController == SelectedViewController.WeatherForecastByDays {
-			ApiService.shared.fetchWeatherForecastDays(woeid: location?.woeid ?? 0) { (response, error) in
+			ApiService.shared.fetchWeatherForecastDays(woeid: location?.woeid ?? 0) { [weak self] (response, error) in
 				if let error = error {
 					print("Failed to fetch data:", error)
 					print(error.localizedDescription)
 					return
 				}
 				if let responseDays = response?.consolidated_weather { 
-					self.locations = responseDays
+					self?.locations = responseDays
 					DispatchQueue.main.async {
-						self.tableView.reloadData()
+						self?.tableView.reloadData()
 					}
 				}
 				
 			}
 		} else {
-			ApiService.shared.fetchWeatherForecastByHour(woeid: location?.woeid ?? 0, date: convertDateFormater(self.day?.applicable_date ?? "")) { (response, error) in
+			self.navigationItem.title = self.day?.applicable_date
+			ApiService.shared.fetchWeatherForecastByHour(woeid: location?.woeid ?? 0, date: convertDateFormater(self.day?.applicable_date ?? "")) { [weak self] (response, error) in
 				if let error = error {
 					print("Failed to fetch data:", error)
 					print(error.localizedDescription)
 					return
 				}
 				if let responseHours = response{
-					self.locations = responseHours
+					self?.locations = responseHours
 					DispatchQueue.main.async {
-						self.tableView.reloadData()
+						self?.tableView.reloadData()
 					}
 				}
 			}
@@ -110,7 +111,7 @@ class TemplateInfoTableViewController: UITableViewController {
 	}
 	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		if currentViewController == SelectedViewController.WeatherForecastByHours {
-			return 150
+			return 250
 		} else {
 			return 0
 		}
@@ -118,10 +119,12 @@ class TemplateInfoTableViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		if currentViewController == SelectedViewController.WeatherForecastByHours {
-			let vw = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 150))
-			vw.backgroundColor = UIColor.purple
-	
-			return vw
+			if let day = self.day {
+			let vw = HeaderTableVIew()
+			vw.day = day
+				return vw
+			}
+			return nil
 		} else {
 			return nil
 		}
