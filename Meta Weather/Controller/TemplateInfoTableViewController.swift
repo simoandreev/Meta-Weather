@@ -58,7 +58,7 @@ class TemplateInfoTableViewController: UITableViewController {
 			}
 		} else {
 			self.navigationItem.title = self.day?.applicable_date
-			ApiService.shared.fetchWeatherForecastByHour(woeid: location?.woeid ?? 0, date: convertDateFormater(self.day?.applicable_date ?? "")) { [weak self] (response, error) in
+			ApiService.shared.fetchWeatherForecastByHour(woeid: location?.woeid ?? 0, date: self.day?.applicable_date.convertDateFormater() ?? "") { [weak self] (response, error) in
 				if let error = error {
 					print("Failed to fetch data:", error)
 					print(error.localizedDescription)
@@ -73,15 +73,7 @@ class TemplateInfoTableViewController: UITableViewController {
 			}
 		}
 	}
-	func convertDateFormater(_ date: String) -> String
-	{
-		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd"
-		let date = dateFormatter.date(from: date)
-		dateFormatter.dateFormat = "yyyy/MM/dd"
-		return  dateFormatter.string(from: date!)
-		
-	}
+
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -111,7 +103,7 @@ class TemplateInfoTableViewController: UITableViewController {
 	}
 	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		if currentViewController == SelectedViewController.WeatherForecastByHours {
-			return 250
+			return 260
 		} else {
 			return 0
 		}
@@ -120,8 +112,9 @@ class TemplateInfoTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		if currentViewController == SelectedViewController.WeatherForecastByHours {
 			if let day = self.day {
-			let vw = HeaderTableVIew()
-			vw.day = day
+				let vw = HeaderTableVIew()
+				vw.day = day
+				vw.location = location
 				return vw
 			}
 			return nil

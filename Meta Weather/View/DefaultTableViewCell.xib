@@ -65,16 +65,16 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p3y-T0-Luh">
-                        <rect key="frame" x="300" y="44" width="70" height="70"/>
+                        <rect key="frame" x="310" y="49" width="60" height="60"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="70" id="bg4-wS-IUd"/>
+                            <constraint firstAttribute="width" constant="60" id="bg4-wS-IUd"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="p3y-T0-Luh" secondAttribute="bottom" constant="44.5" id="3Hd-Un-OQK"/>
+                    <constraint firstAttribute="bottom" secondItem="p3y-T0-Luh" secondAttribute="bottom" constant="49.5" id="3Hd-Un-OQK"/>
                     <constraint firstItem="NND-l3-qoD" firstAttribute="top" secondItem="qnK-dH-e0M" secondAttribute="bottom" constant="8" id="8dJ-jf-qkM"/>
-                    <constraint firstItem="p3y-T0-Luh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="44" id="EwF-5e-gaK"/>
+                    <constraint firstItem="p3y-T0-Luh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="49" id="EwF-5e-gaK"/>
                     <constraint firstItem="6w8-fo-yuX" firstAttribute="top" secondItem="iJb-P6-rit" secondAttribute="bottom" constant="8" id="Fse-Sk-I4k"/>
                     <constraint firstItem="iJb-P6-rit" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="FxR-SC-Ot0"/>
                     <constraint firstItem="6w8-fo-yuX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="bX7-AU-dOG"/>
