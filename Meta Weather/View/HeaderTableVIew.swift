@@ -128,7 +128,7 @@ class HeaderTableVIew: UIView {
 	lazy var headerView: UIView = {
 		let headerView = UIView()
 		headerView.translatesAutoresizingMaskIntoConstraints = false
-		headerView.backgroundColor = UIColor(red: 30/255, green: 128/255, blue: 240/255, alpha: 0.5)
+		headerView.backgroundColor = UIColor(red: 92/255, green: 140/255, blue: 206/255, alpha: 1.0)
 		headerView.layer.shadowColor = UIColor.gray.cgColor
 		headerView.layer.shadowOffset = CGSize(width: 0, height: 5)
 		headerView.layer.shadowOpacity = 1
