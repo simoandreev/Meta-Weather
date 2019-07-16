@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D137286F22DE735700762DA0 /* AddCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D137286E22DE735700762DA0 /* AddCityViewController.swift */; };
+		D137287122DE7A5800762DA0 /* PersistantManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D137287022DE7A5800762DA0 /* PersistantManager.swift */; };
 		D16EF8C422D92BA4006EA27B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16EF8C322D92BA4006EA27B /* AppDelegate.swift */; };
 		D16EF8C622D92BA4006EA27B /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16EF8C522D92BA4006EA27B /* HomeTableViewController.swift */; };
 		D16EF8C922D92BA4006EA27B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D16EF8C722D92BA4006EA27B /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D137286E22DE735700762DA0 /* AddCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityViewController.swift; sourceTree = "<group>"; };
+		D137287022DE7A5800762DA0 /* PersistantManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistantManager.swift; sourceTree = "<group>"; };
 		D16EF8C022D92BA4006EA27B /* Meta Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meta Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16EF8C322D92BA4006EA27B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D16EF8C522D92BA4006EA27B /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				D16EF8DA22D9308F006EA27B /* Location.swift */,
+				D137287022DE7A5800762DA0 /* PersistantManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -98,6 +103,7 @@
 			children = (
 				D16EF8C522D92BA4006EA27B /* HomeTableViewController.swift */,
 				D16EF8DC22D9344B006EA27B /* TemplateInfoTableViewController.swift */,
+				D137286E22DE735700762DA0 /* AddCityViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -203,8 +209,10 @@
 				D16EF8CC22D92BA4006EA27B /* Meta_Weather.xcdatamodeld in Sources */,
 				D16EF8C622D92BA4006EA27B /* HomeTableViewController.swift in Sources */,
 				D16EF8DB22D9308F006EA27B /* Location.swift in Sources */,
+				D137287122DE7A5800762DA0 /* PersistantManager.swift in Sources */,
 				D16EF8C422D92BA4006EA27B /* AppDelegate.swift in Sources */,
 				D1F4857B22DBC5C80010E6B9 /* HeaderTableVIew.swift in Sources */,
+				D137286F22DE735700762DA0 /* AddCityViewController.swift in Sources */,
 				D1F590CA22DA92BB000183CD /* DefaultTableViewCell.swift in Sources */,
 				D1F590C722DA7207000183CD /* ApiService.swift in Sources */,
 				D16EF8DD22D9344B006EA27B /* TemplateInfoTableViewController.swift in Sources */,

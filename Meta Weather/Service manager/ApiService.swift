@@ -10,6 +10,7 @@ import UIKit
 
 class ApiService: NSObject {
 	
+	private let baseUrl = "https://www.metaweather.com/api/location/"
 	private let jsonDecoder: JSONDecoder = {
 		let jsonDecoder = JSONDecoder()
 		return jsonDecoder
@@ -19,14 +20,18 @@ class ApiService: NSObject {
 	private let urlSession = URLSession.shared
 	
 	public func fetchWeatherForecastDays(woeid: Int, completion: @escaping (Location?, Error?) -> Void) {
-		let urlString = "https://www.metaweather.com/api/location/\(woeid)/"
+		let urlString = "\(baseUrl)\(woeid)/"
 		fetchGenericJSONData(urlString: urlString, completion: completion)
 	}
 	
 	public func fetchWeatherForecastByHour(woeid: Int, date: String, completion: @escaping ([Day]?, Error?) -> Void) {
-		let urlString = "https://www.metaweather.com/api/location/\(woeid)/\(date)/"
+		let urlString = "\(baseUrl)\(woeid)/\(date)/"
 		fetchGenericJSONData(urlString: urlString, completion: completion)
-		
+	}
+	
+	public func searchingForExistingCityWeatherForecast(name: String, completion: @escaping ([Location]?, Error?) -> Void) {
+		let urlString = "\(baseUrl)search/?query=\(name)"
+		fetchGenericJSONData(urlString: urlString, completion: completion)
 	}
 	
 	private func fetchGenericJSONData<T: Decodable>(urlString: String, completion: @escaping (T?, Error?) -> ()) {

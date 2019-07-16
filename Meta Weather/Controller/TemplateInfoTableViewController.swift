@@ -64,7 +64,7 @@ class TemplateInfoTableViewController: UITableViewController {
 					print(error.localizedDescription)
 					return
 				}
-				if let responseHours = response{
+				if let responseHours = response {
 					self?.locations = responseHours
 					DispatchQueue.main.async {
 						self?.tableView.reloadData()
@@ -84,21 +84,21 @@ class TemplateInfoTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! DefaultTableViewCell
 		let day = locations[indexPath.row]
-		cell.configure(dateField: currentViewController == SelectedViewController.WeatherForecastByDays ? day.applicable_date : day.created, conditionField: day.weather_state_name, maxTempField: String(day.max_temp), minTempField: String(day.min_temp), windSpeedField: day.wind_direction_compass, weatherConditionImage: UIImage(named: day.weather_state_abbr))
+		cell.configure(
+			dateField: currentViewController == SelectedViewController.WeatherForecastByDays ? "Day: \(day.applicable_date)" : "Created: \(day.created.convertDateFormater(inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SZ", outputFormat: "yyyy-MM-dd HH:mm:ss"))",
+						  conditionField: "State: \(day.weather_state_name)",
+					   	maxTempField: "Max: \(Int(day.max_temp))°",
+						minTempField: "Min: \(Int(day.min_temp))°",
+			windSpeedField: "Wind direction: \(day.wind_direction_compass)",
+						weatherConditionImage: UIImage(named: day.weather_state_abbr))
 		
         return cell
     }
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		if currentViewController == SelectedViewController.WeatherForecastByDays {
-			
-//			if let selectedLocation = self.locations[indexPath.row] {
-//				day = selectedLocation
-//			}
 			self.day = locations[indexPath.row]
-			//print(locations[indexPath.row])
 			performSegue(withIdentifier: hoursSegue, sender: location)
-			
 		}
 	}
 	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -122,12 +122,6 @@ class TemplateInfoTableViewController: UITableViewController {
 			return nil
 		}
 	}
-//	override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//		let vw = UIView()
-//		vw.backgroundColor = UIColor.red
-//
-//		return vw
-//	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == hoursSegue {
