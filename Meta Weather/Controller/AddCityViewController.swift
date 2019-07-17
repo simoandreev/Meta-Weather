@@ -33,7 +33,7 @@ class AddCityViewController: UIViewController {
 							if let location = response.first {
 								if let locationExist = self?.persistanceManager.someEntityExists(woeid: location.woeid) {
 									if !locationExist {
-										self?.persistanceManager.safe(location: location)
+										self?.persistanceManager.save(location: location)
 										print("Save City: \(self?.addNewCityTextField.text ?? "")")
 										if let navController = self?.navigationController {
 											navController.popViewController(animated: true)

@@ -12,7 +12,7 @@ import CoreData
 class PersistantManager {
 	private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 	
-	func safe(location: Location) {
+	func save(location: Location) {
 		let newItem = LocationCD(context: context)
 		newItem.woeid = Int64(location.woeid)
 		newItem.title = location.title

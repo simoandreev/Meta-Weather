@@ -9,7 +9,31 @@
 import UIKit
 
 class HeaderTableVIew: UIView {
-
+	
+	private enum Constant {
+		static let cellHeight: CGFloat = 260
+		static let imageSize: CGFloat = 40
+		static let spacing: CGFloat = 8
+		static let bigSpacing: CGFloat = 16
+		static let largeFontSize: CGFloat = 28
+		static let tableViewHeaderFontSize: CGFloat = 18
+		static let shadowOffsetSize = CGSize(width: 0, height: 5)
+		static let shadowOpacity: Float = 1
+		static let shadowRadius: CGFloat = 5
+		
+		static let tableViewHeaderTitle = "History"
+		static let weatherStateTitle = "State"
+		static let windDirectionTitle = "Wind direction"
+		static let windSpeedTitle = "Wind speed"
+		static let maxTemperatureTitle = "Max"
+		static let minTemperatureTitle = "Min"
+		static let airPresureTitle = "Air Presure"
+		static let humidityTitle = "Humidity"
+		static let visibilityTitle = "Visibility"
+		
+		static let tableViewHeaderColor = UIColor(red: 92/255, green: 140/255, blue: 206/255, alpha: 1.0)
+	}
+	
 	var day: Day?
 	var location: Location? {
 		didSet {
@@ -22,7 +46,7 @@ class HeaderTableVIew: UIView {
 		stackView.distribution  = UIStackView.Distribution.equalSpacing
 		stackView.alignment = UIStackView.Alignment.center
 		stackView.translatesAutoresizingMaskIntoConstraints = false
-		stackView.spacing = 16.0
+		stackView.spacing = Constant.bigSpacing
 		return stackView
 	}()
 	
@@ -32,7 +56,7 @@ class HeaderTableVIew: UIView {
 		leftStackView.distribution  = UIStackView.Distribution.equalSpacing
 		leftStackView.alignment = UIStackView.Alignment.leading
 		leftStackView.translatesAutoresizingMaskIntoConstraints = false
-		leftStackView.spacing = 8.0
+		leftStackView.spacing = Constant.spacing
 		return leftStackView
 	}()
 	
@@ -42,21 +66,21 @@ class HeaderTableVIew: UIView {
 		rightStackView.distribution  = UIStackView.Distribution.equalSpacing
 		rightStackView.alignment = UIStackView.Alignment.trailing
 		rightStackView.translatesAutoresizingMaskIntoConstraints = false
-		rightStackView.spacing = 8.0
+		rightStackView.spacing = Constant.spacing
 		return rightStackView
 	}()
 
 	private lazy var locationTitle: UILabel = {
 		let locationTitle = UILabel()
 		locationTitle.translatesAutoresizingMaskIntoConstraints = false
-		locationTitle.font = UIFont.systemFont(ofSize: 28, weight: .medium)
+		locationTitle.font = UIFont.systemFont(ofSize: Constant.largeFontSize, weight: .medium)
 		locationTitle.textAlignment = .center
 		return locationTitle
 	}()
 	private lazy var currentTemperature: UILabel = {
 		let currentTemperature = UILabel()
 		currentTemperature.translatesAutoresizingMaskIntoConstraints = false
-		currentTemperature.font = UIFont.systemFont(ofSize: 28, weight: .medium)
+		currentTemperature.font = UIFont.systemFont(ofSize: Constant.largeFontSize, weight: .medium)
 		currentTemperature.textAlignment = .center
 		return currentTemperature
 	}()
@@ -70,8 +94,8 @@ class HeaderTableVIew: UIView {
 	private lazy var headerTitle: UILabel = {
 		let headerTitle = UILabel()
 		headerTitle.translatesAutoresizingMaskIntoConstraints = false
-		headerTitle.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-		headerTitle.text = "History"
+		headerTitle.font = UIFont.systemFont(ofSize: Constant.tableViewHeaderFontSize, weight: .medium)
+		headerTitle.text = Constant.tableViewHeaderTitle
 		headerTitle.textAlignment = .center
 		headerTitle.backgroundColor = UIColor.gray
 		return headerTitle
@@ -128,11 +152,11 @@ class HeaderTableVIew: UIView {
 	private lazy var headerView: UIView = {
 		let headerView = UIView()
 		headerView.translatesAutoresizingMaskIntoConstraints = false
-		headerView.backgroundColor = UIColor(red: 92/255, green: 140/255, blue: 206/255, alpha: 1.0)
+		headerView.backgroundColor = Constant.tableViewHeaderColor
 		headerView.layer.shadowColor = UIColor.gray.cgColor
-		headerView.layer.shadowOffset = CGSize(width: 0, height: 5)
-		headerView.layer.shadowOpacity = 1
-		headerView.layer.shadowRadius = 5
+		headerView.layer.shadowOffset = Constant.shadowOffsetSize
+		headerView.layer.shadowOpacity = Constant.shadowOpacity
+		headerView.layer.shadowRadius = Constant.shadowRadius
 		return headerView
 	}()
 	
@@ -165,11 +189,11 @@ class HeaderTableVIew: UIView {
 		headerView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
 		headerView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
 		headerView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-		headerView.heightAnchor.constraint(equalToConstant: 260).isActive = true
+		headerView.heightAnchor.constraint(equalToConstant: Constant.cellHeight).isActive = true
 		
 		locationTitle.text = location?.title
 		locationTitle.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
-		locationTitle.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
+		locationTitle.topAnchor.constraint(equalTo: self.topAnchor, constant: Constant.spacing).isActive = true
 
 		headerTitle.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
 		headerTitle.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
@@ -179,44 +203,44 @@ class HeaderTableVIew: UIView {
 		}
 		
 		imageView.image = UIImage(named: day?.weatherStateAbbr ?? "")
-		imageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-		imageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+		imageView.widthAnchor.constraint(equalToConstant: Constant.imageSize).isActive = true
+		imageView.heightAnchor.constraint(equalToConstant: Constant.imageSize).isActive = true
 		
-		stackView.topAnchor.constraint(equalTo: locationTitle.bottomAnchor, constant: 8).isActive = true
+		stackView.topAnchor.constraint(equalTo: locationTitle.bottomAnchor, constant: Constant.spacing).isActive = true
 		stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
 		
-		rightStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 8).isActive = true
-		rightStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
+		rightStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: Constant.spacing).isActive = true
+		rightStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -Constant.bigSpacing).isActive = true
 		
-		leftStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 8).isActive = true
-		leftStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
+		leftStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: Constant.spacing).isActive = true
+		leftStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: Constant.bigSpacing).isActive = true
 
 		//Right Stack View
 		if let stateNameDescription = self.day?.weatherStateName {
-			stateName.text = "State: \(stateNameDescription)"
+			stateName.text = "\(Constant.weatherStateTitle): \(stateNameDescription)"
 		}
 		if let wind = self.day?.windDirectionCompass {
-			windDirection.text = "Wind direction: \(wind)"
+			windDirection.text = "\(Constant.windDirectionTitle): \(wind)"
 		}
 		if let windSpeedDescription = self.day?.windSpeed {
-			windSpeed.text = "Wind speed: \(Int(windSpeedDescription)) mph"
+			windSpeed.text = "\(Constant.windSpeedTitle): \(Int(windSpeedDescription)) mph"
 		}
 		if let maxTemperature = self.day?.maxTemperature {
-			maxTemp.text = "Max: \(String(Int(maxTemperature)))°"
+			maxTemp.text = "\(Constant.maxTemperatureTitle): \(String(Int(maxTemperature)))°"
 		}
 		if let minTemperature = self.day?.minTemperature {
-			minTemp.text = "Min: \(String(Int(minTemperature)))°"
+			minTemp.text = "\(Constant.minTemperatureTitle): \(String(Int(minTemperature)))°"
 		}
 		
 		//Left Stack View
 		if let airPresureDescription = self.day?.airPressure {
-			airPresure.text = "Air Presure: \(String(Int(airPresureDescription))) mb"
+			airPresure.text = "\(Constant.airPresureTitle): \(String(Int(airPresureDescription))) mb"
 		}
 		if let humidityDescription = self.day?.humidity {
-			humidity.text = "Humidity: \(String(humidityDescription)) %"
+			humidity.text = "\(Constant.humidityTitle): \(String(humidityDescription)) %"
 		}
 		if let visibilityDescription = self.day?.visibility {
-			visibility.text = "Visibility: \(String(Int(visibilityDescription))) miles"
+			visibility.text = "\(Constant.visibilityTitle): \(String(Int(visibilityDescription))) miles"
 		}
 	}
 }

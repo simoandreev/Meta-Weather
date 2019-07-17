@@ -9,6 +9,18 @@
 import UIKit
 
 class TemplateInfoTableViewController: UITableViewController {
+	private enum Constant {
+		static let cellHeight: CGFloat = 260
+		
+		static let dayTitle = "Day"
+		static let createdTitle = "Created"
+		static let stateTitle = "State"
+		static let windDirectionTitle = "Wind direction"
+		static let maxTemperatureTitle = "Max"
+		static let minTemperatureTitle = "Min"
+		static let inputDatedFormat = "yyyy-MM-dd'T'HH:mm:ss.SZ"
+		static let outputDatedFormat = "yyyy-MM-dd HH:mm:ss"
+	}
 	private let cellId = "DefaultTableViewCell"
 	private let weekDaysSegue = "showWeekDaysInfo"
 	private let hoursSegue = "showHour"
@@ -85,11 +97,11 @@ class TemplateInfoTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! DefaultTableViewCell
 		let day = locations[indexPath.row]
 		cell.configure(
-			dateField: currentViewController == SelectedViewController.WeatherForecastByDays ? "Day: \(day.applicableDate)" : "Created: \(day.created.convertDateFormater(inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SZ", outputFormat: "yyyy-MM-dd HH:mm:ss"))",
-						  conditionField: "State: \(day.weatherStateName)",
-					   	maxTempField: "Max: \(Int(day.maxTemperature))°",
-						minTempField: "Min: \(Int(day.minTemperature))°",
-			windSpeedField: "Wind direction: \(day.windDirectionCompass)",
+			dateField: currentViewController == SelectedViewController.WeatherForecastByDays ? "\(Constant.dayTitle): \(day.applicableDate)" : "\(Constant.createdTitle): \(day.created.convertDateFormater(inputFormat: Constant.inputDatedFormat, outputFormat: Constant.outputDatedFormat))",
+						  conditionField: "\(Constant.stateTitle): \(day.weatherStateName)",
+					   	maxTempField: "\(Constant.maxTemperatureTitle): \(Int(day.maxTemperature))°",
+						minTempField: "\(Constant.minTemperatureTitle): \(Int(day.minTemperature))°",
+			windSpeedField: "\(Constant.windDirectionTitle): \(day.windDirectionCompass)",
 						weatherConditionImage: UIImage(named: day.weatherStateAbbr))
 		
         return cell
@@ -103,7 +115,7 @@ class TemplateInfoTableViewController: UITableViewController {
 	}
 	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		if currentViewController == SelectedViewController.WeatherForecastByHours {
-			return 260
+			return Constant.cellHeight
 		} else {
 			return 0
 		}

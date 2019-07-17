@@ -30,7 +30,7 @@ class HomeTableViewController: UITableViewController {
 		
 		for location in defaultCityArray {
 			if !persistanceManager.someEntityExists(woeid: location.woeid) {
-				persistanceManager.safe(location: location)
+				persistanceManager.save(location: location)
 			}
 		}
 		locationsCD = persistanceManager.loadLocations()
