@@ -10,21 +10,19 @@ import UIKit
 import CoreData
 
 class HomeTableViewController: UITableViewController {
-	var locationsCD: [LocationCD]?
+	private var locationsCD: [LocationCD]?
 	private let cellId = "homeCell"
 	private let weekDaysSegue = "showWeekDaysInfo"
 	private let persistanceManager: PersistantManager = PersistantManager()
-	//private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-	private let defaultCityArray = [Location(title: "Sofia", woeid: 839722, consolidated_weather: []),
-							Location(title: "NY", woeid: 2459115, consolidated_weather: []),
-							Location(title: "Tokyo", woeid: 1118370, consolidated_weather: [])]
+	private let defaultCityArray = [Location(title: "Sofia", woeid: 839722, consolidatedWeather: []),
+							Location(title: "NY", woeid: 2459115, consolidatedWeather: []),
+							Location(title: "Tokyo", woeid: 1118370, consolidatedWeather: [])]
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
 		
 		self.navigationController?.navigationBar.prefersLargeTitles = true
-		//self.tableView.register(WeekDaysTableVTableViewCell.self, forCellReuseIdentifier: cellId)
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -78,10 +76,11 @@ class HomeTableViewController: UITableViewController {
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == weekDaysSegue {
-			let viewController:TemplateInfoTableViewController = segue.destination as! TemplateInfoTableViewController
-			viewController.location = sender as? Location
-			viewController.navigationItem.title = (sender as? Location)?.title
-			
+			if let segueDestination = segue.destination as? TemplateInfoTableViewController {
+				let viewController:TemplateInfoTableViewController = segueDestination
+				viewController.location = sender as? Location
+				viewController.navigationItem.title = (sender as? Location)?.title
+			}
 		}
 	}
 

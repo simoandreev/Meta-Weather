@@ -11,22 +11,45 @@ import Foundation
 struct Location: Codable {
 	let title: String
 	let woeid: Int
-	let consolidated_weather: [Day]?
+	let consolidatedWeather: [Day]?
+	
+	enum CodingKeys: String, CodingKey {
+		case title
+		case woeid
+		case consolidatedWeather = "consolidated_weather"
+	}
 }
 
 struct Day: Codable {
-	let weather_state_name: String
-	let weather_state_abbr: String
-	let wind_direction_compass: String
+	let weatherStateName: String
+	let weatherStateAbbr: String
+	let windDirectionCompass: String
 	let created: String
-	let applicable_date: String
-	let min_temp: Float
-	let max_temp: Float
-	let the_temp: Float
-	let wind_speed: Float
-	let wind_direction: Float
-	let air_pressure: Float
+	let applicableDate: String
+	let minTemperature: Float
+	let maxTemperature: Float
+	let currenTemperature: Float
+	let windSpeed: Float
+	let windDirection: Float
+	let airPressure: Float
 	let humidity: Int
 	let visibility: Float?
 	let predictability: Int
+	
+	enum CodingKeys: String, CodingKey {
+		case weatherStateName = "weather_state_name"
+		case weatherStateAbbr = "weather_state_abbr"
+		case windDirectionCompass = "wind_direction_compass"
+		case created
+		case applicableDate = "applicable_date"
+		case minTemperature = "min_temp"
+		case maxTemperature = "max_temp"
+		case currenTemperature = "the_temp"
+		case windSpeed = "wind_speed"
+		case windDirection = "wind_direction"
+		case airPressure = "air_pressure"
+		case humidity
+		case visibility
+		case predictability
+	}
 }

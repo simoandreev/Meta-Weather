@@ -74,7 +74,7 @@
 		D16EF8C222D92BA4006EA27B /* Meta Weather */ = {
 			isa = PBXGroup;
 			children = (
-				D1F4857C22DD0E2B0010E6B9 /* Utils */,
+				D1F4857C22DD0E2B0010E6B9 /* Extension */,
 				D1F590C522DA71D7000183CD /* Service manager */,
 				D16EF8D822D9304E006EA27B /* Model */,
 				D16EF8C322D92BA4006EA27B /* AppDelegate.swift */,
@@ -118,12 +118,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		D1F4857C22DD0E2B0010E6B9 /* Utils */ = {
+		D1F4857C22DD0E2B0010E6B9 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				D1F4857F22DD0FDE0010E6B9 /* String+Extension.swift */,
 			);
-			path = Utils;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		D1F590C522DA71D7000183CD /* Service manager */ = {

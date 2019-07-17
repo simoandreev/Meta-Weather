@@ -14,6 +14,9 @@ extension String {
 		dateFormatter.dateFormat = inputFormat
 		let date = dateFormatter.date(from: self)
 		dateFormatter.dateFormat = outputFormat
-		return  dateFormatter.string(from: date!)
+		if let date = date {
+			return  dateFormatter.string(from: date)
+		}
+		return ""
 	}
 }

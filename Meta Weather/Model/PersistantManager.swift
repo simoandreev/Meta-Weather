@@ -21,19 +21,10 @@ class PersistantManager {
 	}
 	
 	func convertToLocation(locationCD: LocationCD) -> Location {
-		let location = Location(title: locationCD.title ?? "", woeid: Int(locationCD.woeid), consolidated_weather: [])
+		let location = Location(title: locationCD.title ?? "", woeid: Int(locationCD.woeid), consolidatedWeather: [])
 		return location
 	}
-//	func loadFavorites() -> [MovieCD] {
-//		let predicate = NSPredicate(format: "favorite == %@",  NSNumber(value: true))
-//		return loadMovies(with: predicate)
-//	}
-//
-//	func loadMyMovies() -> [MovieCD] {
-//		let predicate = NSPredicate(format: "myMovie == %@",  NSNumber(value: true))
-//		return loadMovies(with: predicate)
-//	}
-//
+
 	func loadLocations() -> [LocationCD] {
 		let request: NSFetchRequest<LocationCD> = LocationCD.fetchRequest()
 		var locations: [LocationCD] = []

@@ -42,7 +42,8 @@ class ApiService: NSObject {
 				return
 			}
 			do {
-				let objects = try JSONDecoder().decode(T.self, from: data!)
+				guard let data = data else { return }
+				let objects = try JSONDecoder().decode(T.self, from: data)
 				// success
 				completion(objects, nil)
 			} catch {

@@ -48,7 +48,7 @@ class TemplateInfoTableViewController: UITableViewController {
 					print(error.localizedDescription)
 					return
 				}
-				if let responseDays = response?.consolidated_weather { 
+				if let responseDays = response?.consolidatedWeather { 
 					self?.locations = responseDays
 					DispatchQueue.main.async {
 						self?.tableView.reloadData()
@@ -57,8 +57,8 @@ class TemplateInfoTableViewController: UITableViewController {
 				
 			}
 		} else {
-			self.navigationItem.title = self.day?.applicable_date
-			ApiService.shared.fetchWeatherForecastByHour(woeid: location?.woeid ?? 0, date: self.day?.applicable_date.convertDateFormater() ?? "") { [weak self] (response, error) in
+			self.navigationItem.title = self.day?.applicableDate
+			ApiService.shared.fetchWeatherForecastByHour(woeid: location?.woeid ?? 0, date: self.day?.applicableDate.convertDateFormater() ?? "") { [weak self] (response, error) in
 				if let error = error {
 					print("Failed to fetch data:", error)
 					print(error.localizedDescription)
@@ -85,12 +85,12 @@ class TemplateInfoTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! DefaultTableViewCell
 		let day = locations[indexPath.row]
 		cell.configure(
-			dateField: currentViewController == SelectedViewController.WeatherForecastByDays ? "Day: \(day.applicable_date)" : "Created: \(day.created.convertDateFormater(inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SZ", outputFormat: "yyyy-MM-dd HH:mm:ss"))",
-						  conditionField: "State: \(day.weather_state_name)",
-					   	maxTempField: "Max: \(Int(day.max_temp))°",
-						minTempField: "Min: \(Int(day.min_temp))°",
-			windSpeedField: "Wind direction: \(day.wind_direction_compass)",
-						weatherConditionImage: UIImage(named: day.weather_state_abbr))
+			dateField: currentViewController == SelectedViewController.WeatherForecastByDays ? "Day: \(day.applicableDate)" : "Created: \(day.created.convertDateFormater(inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SZ", outputFormat: "yyyy-MM-dd HH:mm:ss"))",
+						  conditionField: "State: \(day.weatherStateName)",
+					   	maxTempField: "Max: \(Int(day.maxTemperature))°",
+						minTempField: "Min: \(Int(day.minTemperature))°",
+			windSpeedField: "Wind direction: \(day.windDirectionCompass)",
+						weatherConditionImage: UIImage(named: day.weatherStateAbbr))
 		
         return cell
     }
@@ -125,10 +125,11 @@ class TemplateInfoTableViewController: UITableViewController {
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == hoursSegue {
-			let viewController:TemplateInfoTableViewController = segue.destination as! TemplateInfoTableViewController
-			viewController.day = self.day
-			viewController.location = sender as? Location
-			
+			if let segueDestination = segue.destination as? TemplateInfoTableViewController {
+				let viewController:TemplateInfoTableViewController = segueDestination
+				viewController.day = self.day
+				viewController.location = sender as? Location
+			}
 		}
 	}
 
