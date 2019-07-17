@@ -57,6 +57,25 @@ class HomeTableViewController: UITableViewController {
 		}
 	}
 	
+	override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+		return true
+	}
+	
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+		if editingStyle == .delete {
+			if let locationItem = locationsCD?[indexPath.row] {
+				if Int(locationItem.woeid) == 839722 || Int(locationItem.woeid) == 2459115 || Int(locationItem.woeid) == 1118370 {
+					print("Can't Delete Default Location !!!")
+				} else {
+					print("Deleted")
+					persistanceManager.deleteItem(object: locationItem)
+					self.locationsCD?.remove(at: indexPath.row)
+					self.tableView.reloadData()
+				}
+			}
+		}
+	}
+	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == weekDaysSegue {
 			let viewController:TemplateInfoTableViewController = segue.destination as! TemplateInfoTableViewController

@@ -61,10 +61,10 @@ class PersistantManager {
 		return results.count > 0
 	}
 
-//	func deleteItem(object: MovieCD) {
-//		context.delete(object)
-//		saveContext()
-//	}
+	func deleteItem(object: LocationCD) {
+		context.delete(object)
+		saveContext()
+	}
 	
 	private func saveContext() {
 		do {
