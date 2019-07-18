@@ -6,7 +6,6 @@ target 'Meta Weather' do
   use_frameworks!
 
   # Pods for Meta Weather
-    pod 'JGProgressHUD'
     pod 'ReachabilitySwift'
     pod 'NotificationBannerSwift'
 

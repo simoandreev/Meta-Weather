@@ -16,14 +16,17 @@ class AddCityViewController: UIViewController {
 	@IBOutlet weak var addNewCityTextField: UITextField!
 	override func viewDidLoad() {
         super.viewDidLoad()
+		self.hideKeyboardWhenTappedAround() 
     }
     
 	@IBAction func addNewCity(_ sender: UIButton) {
+		self.showSpinner(onView: self.view)
 		if let text = addNewCityTextField.text {
 			ApiService.shared.searchingForExistingCityWeatherForecast(name: text) { [weak self] (response, error) in
 				if let error = error {
 					print("Failed to fetch data:", error)
 					print(error.localizedDescription)
+					self?.removeSpinner()
 					return
 				}
 				if let response = response {
@@ -35,15 +38,19 @@ class AddCityViewController: UIViewController {
 									if !locationExist {
 										self?.persistanceManager.save(location: location)
 										print("Save City: \(self?.addNewCityTextField.text ?? "")")
+										self?.removeSpinner()
 										if let navController = self?.navigationController {
 											navController.popViewController(animated: true)
 										}
+									} else {
+										self?.removeSpinner()
 									}
 								}
 							}
 						}
 					} else {
 						print("Does not exist data for that city, try again with another one.")
+						self?.removeSpinner()
 					}
 				}
 				

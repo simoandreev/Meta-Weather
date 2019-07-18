@@ -18,6 +18,7 @@ class TemplateInfoTableViewController: UITableViewController {
 		static let windDirectionTitle = "Wind direction"
 		static let maxTemperatureTitle = "Max"
 		static let minTemperatureTitle = "Min"
+		static let refreshControllTitle = "Pull to refresh"
 		static let inputDatedFormat = "yyyy-MM-dd'T'HH:mm:ss.SZ"
 		static let outputDatedFormat = "yyyy-MM-dd HH:mm:ss"
 		
@@ -53,20 +54,37 @@ class TemplateInfoTableViewController: UITableViewController {
         super.viewDidLoad()
 		tableView.tableFooterView = UIView()
 		tableView.register(UINib(nibName: cellId, bundle: nil), forCellReuseIdentifier: cellId)
+		self.tableView.backgroundColor = Constant.tableViewBackgroundColor
+		setupRefreshControll()
     }
 	
+	private func setupRefreshControll() {
+		let refreshControl = UIRefreshControl()
+		refreshControl.attributedTitle = NSAttributedString(string: Constant.refreshControllTitle)
+		refreshControl.addTarget(self, action: #selector(refreshCollectionView), for: .valueChanged)
+		tableView.refreshControl = refreshControl
+	}
+	
+	@objc func refreshCollectionView(refreshControl: UIRefreshControl) {
+		fetchData()
+		refreshControl.endRefreshing()
+	}
+	
 	private func fetchData() {
+		self.showSpinner(onView: self.view)
 		if currentViewController == SelectedViewController.WeatherForecastByDays {
 			ApiService.shared.fetchWeatherForecastDays(woeid: location?.woeid ?? 0) { [weak self] (response, error) in
 				if let error = error {
 					print("Failed to fetch data:", error)
 					print(error.localizedDescription)
+					self?.removeSpinner()
 					return
 				}
 				if let responseDays = response?.consolidatedWeather { 
 					self?.locations = responseDays
 					DispatchQueue.main.async {
 						self?.tableView.reloadData()
+						self?.removeSpinner()
 					}
 				}
 				
@@ -77,12 +95,14 @@ class TemplateInfoTableViewController: UITableViewController {
 				if let error = error {
 					print("Failed to fetch data:", error)
 					print(error.localizedDescription)
+					self?.removeSpinner()
 					return
 				}
 				if let responseHours = response {
 					self?.locations = responseHours
 					DispatchQueue.main.async {
 						self?.tableView.reloadData()
+						self?.removeSpinner()
 					}
 				}
 			}

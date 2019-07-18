@@ -8,12 +8,22 @@
 
 import UIKit
 import CoreData
+import Reachability
+import NotificationBannerSwift
 
 class HomeTableViewController: UITableViewController {
+	private enum Constant {
+		static let connectionStatusTitle = "Connection status: "
+		static let connectionStatusOnineTitle = "Online"
+		static let connectionStatusOfflineTitle = "Offline"
+		
+		static let tableViewBackgroundColor = UIColor(red: 92/255, green: 140/255, blue: 206/255, alpha: 1.0)
+	}
 	private var locationsCD: [LocationCD]?
 	private let cellId = "homeCell"
 	private let weekDaysSegue = "showWeekDaysInfo"
 	private let persistanceManager: PersistantManager = PersistantManager()
+	private let reachability = Reachability()
 	private let defaultCityArray = [Location(title: "Sofia", woeid: 839722, consolidatedWeather: []),
 							Location(title: "NY", woeid: 2459115, consolidatedWeather: []),
 							Location(title: "Tokyo", woeid: 1118370, consolidatedWeather: [])]
@@ -23,6 +33,21 @@ class HomeTableViewController: UITableViewController {
 		// Do any additional setup after loading the view.
 		tableView.tableFooterView = UIView()
 		self.navigationController?.navigationBar.prefersLargeTitles = true
+		self.tableView.backgroundColor = Constant.tableViewBackgroundColor
+		
+		do {
+			try reachability?.startNotifier()
+		} catch {
+			return
+		}
+		reachability?.whenReachable = { reachability in
+			let banner = NotificationBanner(title: Constant.connectionStatusTitle, subtitle: Constant.connectionStatusOnineTitle, style: .success)
+			banner.show()
+		}
+		reachability?.whenUnreachable = { reachability in
+			let banner = NotificationBanner(title: Constant.connectionStatusTitle, subtitle: Constant.connectionStatusOfflineTitle, style: .danger)
+			banner.show()
+		}
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -36,6 +61,7 @@ class HomeTableViewController: UITableViewController {
 		locationsCD = persistanceManager.loadLocations()
 		self.tableView.reloadData()
 	}
+	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return locationsCD?.count ?? 0
 	}

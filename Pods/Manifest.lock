@@ -1,5 +1,4 @@
 PODS:
-  - JGProgressHUD (2.0.3)
   - MarqueeLabel (4.0.0)
   - NotificationBannerSwift (2.4.1):
     - MarqueeLabel (~> 4.0.0)
@@ -8,25 +7,22 @@ PODS:
   - SnapKit (5.0.0)
 
 DEPENDENCIES:
-  - JGProgressHUD
   - NotificationBannerSwift
   - ReachabilitySwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - JGProgressHUD
     - MarqueeLabel
     - NotificationBannerSwift
     - ReachabilitySwift
     - SnapKit
 
 SPEC CHECKSUMS:
-  JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   MarqueeLabel: b55b26e690b6ad41faedd95cbf5eae6f1d1735b4
   NotificationBannerSwift: 1e914a69fe5adbf1d39231a3605a9203fdc9c674
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
 
-PODFILE CHECKSUM: 68cf6437916471c62147c432808f827646922de3
+PODFILE CHECKSUM: 4d1f3127794d407f43cabbdfc116b784d5de4fb5
 
 COCOAPODS: 1.6.0.rc.1

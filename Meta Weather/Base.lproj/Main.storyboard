@@ -59,13 +59,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add new city" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oo5-d2-0yn">
-                                <rect key="frame" x="20" y="88" width="374" height="30"/>
+                                <rect key="frame" x="20" y="108" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uY5-kV-YPe">
-                                <rect key="frame" x="20" y="126" width="374" height="30"/>
+                                <rect key="frame" x="20" y="146" width="374" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Save">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -79,7 +79,7 @@
                         <constraints>
                             <constraint firstItem="oo5-d2-0yn" firstAttribute="leading" secondItem="uY5-kV-YPe" secondAttribute="leading" id="3rV-Tq-O9k"/>
                             <constraint firstItem="oo5-d2-0yn" firstAttribute="trailing" secondItem="7H1-l5-LYg" secondAttribute="trailingMargin" id="GZt-qL-s3p"/>
-                            <constraint firstItem="oo5-d2-0yn" firstAttribute="top" secondItem="VA3-9e-uUj" secondAttribute="top" id="NTX-Eq-wdF"/>
+                            <constraint firstItem="oo5-d2-0yn" firstAttribute="top" secondItem="VA3-9e-uUj" secondAttribute="top" constant="20" id="NTX-Eq-wdF"/>
                             <constraint firstItem="uY5-kV-YPe" firstAttribute="top" secondItem="oo5-d2-0yn" secondAttribute="bottom" constant="8" symbolic="YES" id="OK5-Da-mhS"/>
                             <constraint firstItem="oo5-d2-0yn" firstAttribute="leading" secondItem="7H1-l5-LYg" secondAttribute="leadingMargin" id="Rv5-WB-wU4"/>
                             <constraint firstItem="oo5-d2-0yn" firstAttribute="trailing" secondItem="uY5-kV-YPe" secondAttribute="trailing" id="sce-BU-aHE"/>
@@ -102,8 +102,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="sectionIndexBackgroundColor" red="0.36078431370000003" green="0.54901960780000003" blue="0.80784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="sectionIndexTrackingBackgroundColor" red="0.36078431370000003" green="0.54901960780000003" blue="0.80784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
                             <outlet property="dataSource" destination="uLb-Dn-7EB" id="Zhh-Lm-RUc"/>
                             <outlet property="delegate" destination="uLb-Dn-7EB" id="bxb-Y8-GCt"/>
@@ -125,8 +123,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="sectionIndexBackgroundColor" red="0.36078431370000003" green="0.54901960780000003" blue="0.80784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="sectionIndexTrackingBackgroundColor" red="0.36078431370000003" green="0.54901960780000003" blue="0.80784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
                             <outlet property="dataSource" destination="w68-Wm-YKR" id="7ww-Vp-3hF"/>
                             <outlet property="delegate" destination="w68-Wm-YKR" id="wvr-xF-225"/>

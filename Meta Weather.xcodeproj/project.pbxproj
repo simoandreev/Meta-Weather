@@ -10,6 +10,7 @@
 		B8AFFB32BC5BFBF30FED4FD7 /* Pods_Meta_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 281274EF75524B6AC277A120 /* Pods_Meta_Weather.framework */; };
 		D137286F22DE735700762DA0 /* AddCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D137286E22DE735700762DA0 /* AddCityViewController.swift */; };
 		D137287122DE7A5800762DA0 /* PersistantManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D137287022DE7A5800762DA0 /* PersistantManager.swift */; };
+		D137287522E1072000762DA0 /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D137287422E1072000762DA0 /* ViewController+Extension.swift */; };
 		D16EF8C422D92BA4006EA27B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16EF8C322D92BA4006EA27B /* AppDelegate.swift */; };
 		D16EF8C622D92BA4006EA27B /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16EF8C522D92BA4006EA27B /* HomeTableViewController.swift */; };
 		D16EF8C922D92BA4006EA27B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D16EF8C722D92BA4006EA27B /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		281274EF75524B6AC277A120 /* Pods_Meta_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meta_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D137286E22DE735700762DA0 /* AddCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityViewController.swift; sourceTree = "<group>"; };
 		D137287022DE7A5800762DA0 /* PersistantManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistantManager.swift; sourceTree = "<group>"; };
+		D137287422E1072000762DA0 /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
 		D16EF8C022D92BA4006EA27B /* Meta Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meta Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16EF8C322D92BA4006EA27B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D16EF8C522D92BA4006EA27B /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
@@ -66,7 +68,6 @@
 				1CB486E3362CFEDF538CC83A /* Pods-Meta Weather.debug.xcconfig */,
 				D4B3040FCE0FF51901118DA6 /* Pods-Meta Weather.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -94,9 +95,9 @@
 				D1F4857C22DD0E2B0010E6B9 /* Extension */,
 				D1F590C522DA71D7000183CD /* Service manager */,
 				D16EF8D822D9304E006EA27B /* Model */,
-				D16EF8C322D92BA4006EA27B /* AppDelegate.swift */,
 				D16EF8E022D934B2006EA27B /* View */,
 				D16EF8D922D9305E006EA27B /* Controller */,
+				D16EF8C322D92BA4006EA27B /* AppDelegate.swift */,
 				D16EF8C722D92BA4006EA27B /* Main.storyboard */,
 				D16EF8CD22D92BA5006EA27B /* Assets.xcassets */,
 				D16EF8CF22D92BA5006EA27B /* LaunchScreen.storyboard */,
@@ -139,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				D1F4857F22DD0FDE0010E6B9 /* String+Extension.swift */,
+				D137287422E1072000762DA0 /* ViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -238,7 +240,6 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Meta Weather/Pods-Meta Weather-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
@@ -248,7 +249,6 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
@@ -296,6 +296,7 @@
 				D1F4857B22DBC5C80010E6B9 /* HeaderTableVIew.swift in Sources */,
 				D137286F22DE735700762DA0 /* AddCityViewController.swift in Sources */,
 				D1F590CA22DA92BB000183CD /* DefaultTableViewCell.swift in Sources */,
+				D137287522E1072000762DA0 /* ViewController+Extension.swift in Sources */,
 				D1F590C722DA7207000183CD /* ApiService.swift in Sources */,
 				D16EF8DD22D9344B006EA27B /* TemplateInfoTableViewController.swift in Sources */,
 				D1F4858022DD0FDE0010E6B9 /* String+Extension.swift in Sources */,
@@ -448,6 +449,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A6GK56VJJS;
 				INFOPLIST_FILE = "Meta Weather/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -467,6 +469,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A6GK56VJJS;
 				INFOPLIST_FILE = "Meta Weather/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
