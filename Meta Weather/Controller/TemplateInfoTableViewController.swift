@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 class TemplateInfoTableViewController: UITableViewController {
 	private enum Constant {
@@ -19,6 +20,8 @@ class TemplateInfoTableViewController: UITableViewController {
 		static let maxTemperatureTitle = "Max"
 		static let minTemperatureTitle = "Min"
 		static let refreshControllTitle = "Pull to refresh"
+		static let errorTitle = "Error"
+		static let successTitle = "Success"
 		static let inputDatedFormat = "yyyy-MM-dd'T'HH:mm:ss.SZ"
 		static let outputDatedFormat = "yyyy-MM-dd HH:mm:ss"
 		
@@ -75,9 +78,11 @@ class TemplateInfoTableViewController: UITableViewController {
 		if currentViewController == SelectedViewController.WeatherForecastByDays {
 			ApiService.shared.fetchWeatherForecastDays(woeid: location?.woeid ?? 0) { [weak self] (response, error) in
 				if let error = error {
-					print("Failed to fetch data:", error)
-					print(error.localizedDescription)
 					self?.removeSpinner()
+					DispatchQueue.main.async {
+						let banner = NotificationBanner(title: Constant.errorTitle, subtitle: error.localizedDescription, style: .warning)
+						banner.show()
+					}
 					return
 				}
 				if let responseDays = response?.consolidatedWeather { 
@@ -93,9 +98,11 @@ class TemplateInfoTableViewController: UITableViewController {
 			self.navigationItem.title = self.day?.applicableDate
 			ApiService.shared.fetchWeatherForecastByHour(woeid: location?.woeid ?? 0, date: self.day?.applicableDate.convertDateFormater() ?? "") { [weak self] (response, error) in
 				if let error = error {
-					print("Failed to fetch data:", error)
-					print(error.localizedDescription)
 					self?.removeSpinner()
+					DispatchQueue.main.async {
+						let banner = NotificationBanner(title: Constant.errorTitle, subtitle: error.localizedDescription, style: .warning)
+						banner.show()
+					}
 					return
 				}
 				if let responseHours = response {

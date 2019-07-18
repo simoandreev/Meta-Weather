@@ -16,6 +16,8 @@ class HomeTableViewController: UITableViewController {
 		static let connectionStatusTitle = "Connection status: "
 		static let connectionStatusOnineTitle = "Online"
 		static let connectionStatusOfflineTitle = "Offline"
+		static let errorTitle = "Error"
+		static let cantDeleteDefaultLocationMessage = "Can't delete the default location."
 		
 		static let tableViewBackgroundColor = UIColor(red: 92/255, green: 140/255, blue: 206/255, alpha: 1.0)
 	}
@@ -25,12 +27,11 @@ class HomeTableViewController: UITableViewController {
 	private let persistanceManager: PersistantManager = PersistantManager()
 	private let reachability = Reachability()
 	private let defaultCityArray = [Location(title: "Sofia", woeid: 839722, consolidatedWeather: []),
-							Location(title: "NY", woeid: 2459115, consolidatedWeather: []),
+							Location(title: "New York", woeid: 2459115, consolidatedWeather: []),
 							Location(title: "Tokyo", woeid: 1118370, consolidatedWeather: [])]
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view.
 		tableView.tableFooterView = UIView()
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 		self.tableView.backgroundColor = Constant.tableViewBackgroundColor
@@ -89,9 +90,9 @@ class HomeTableViewController: UITableViewController {
 		if editingStyle == .delete {
 			if let locationItem = locationsCD?[indexPath.row] {
 				if Int(locationItem.woeid) == 839722 || Int(locationItem.woeid) == 2459115 || Int(locationItem.woeid) == 1118370 {
-					print("Can't Delete Default Location !!!")
+					let banner = NotificationBanner(title: Constant.errorTitle, subtitle: Constant.cantDeleteDefaultLocationMessage, style: .warning)
+					banner.show()
 				} else {
-					print("Deleted")
 					persistanceManager.deleteItem(object: locationItem)
 					self.locationsCD?.remove(at: indexPath.row)
 					self.tableView.reloadData()

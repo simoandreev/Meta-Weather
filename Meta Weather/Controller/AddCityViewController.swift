@@ -36,7 +36,7 @@ class AddCityViewController: UIViewController {
 				if let error = error {
 					self?.removeSpinner()
 					DispatchQueue.main.async {
-					let banner = NotificationBanner(title: Constant.errorTitle, subtitle: error.localizedDescription, style: .warning)
+						let banner = NotificationBanner(title: Constant.errorTitle, subtitle: error.localizedDescription, style: .warning)
 						banner.show()
 					}
 					return

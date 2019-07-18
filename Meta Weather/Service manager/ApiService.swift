@@ -31,7 +31,10 @@ class ApiService: NSObject {
 	
 	public func searchingForExistingCityWeatherForecast(name: String, completion: @escaping ([Location]?, Error?) -> Void) {
 		let urlString = "\(baseUrl)search/?query=\(name)"
-		fetchGenericJSONData(urlString: urlString, completion: completion)
+		let convertedUrlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+		if let urlString = convertedUrlString {
+			fetchGenericJSONData(urlString: urlString, completion: completion)
+		}
 	}
 	
 	private func fetchGenericJSONData<T: Decodable>(urlString: String, completion: @escaping (T?, Error?) -> ()) {
