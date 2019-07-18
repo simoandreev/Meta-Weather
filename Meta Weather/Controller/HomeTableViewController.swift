@@ -21,7 +21,7 @@ class HomeTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
-		
+		tableView.tableFooterView = UIView()
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 	}
 	

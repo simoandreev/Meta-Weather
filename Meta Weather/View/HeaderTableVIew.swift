@@ -11,7 +11,7 @@ import UIKit
 class HeaderTableVIew: UIView {
 	
 	private enum Constant {
-		static let cellHeight: CGFloat = 260
+		static let cellHeight: CGFloat = 230
 		static let imageSize: CGFloat = 40
 		static let spacing: CGFloat = 8
 		static let bigSpacing: CGFloat = 16
@@ -103,7 +103,7 @@ class HeaderTableVIew: UIView {
 	private lazy var stateName: UILabel = {
 		let stateName = UILabel()
 		stateName.translatesAutoresizingMaskIntoConstraints = false
-		stateName.textAlignment = .left
+		stateName.textAlignment = .right
 		return stateName
 	}()
 	private lazy var windDirection: UILabel = {
@@ -169,19 +169,23 @@ class HeaderTableVIew: UIView {
 	}
 	
 	private func setupView() {
+		self.backgroundColor = Constant.tableViewHeaderColor
 		addSubview(headerView)
 		headerView.addSubview(locationTitle)
 		headerView.addSubview(stackView)
 		headerView.addSubview(rightStackView)
 		headerView.addSubview(leftStackView)
 		headerView.addSubview(headerTitle)
+		
 		stackView.addArrangedSubview(currentTemperature)
 		stackView.addArrangedSubview(imageView)
-		leftStackView.addArrangedSubview(stateName)
+		
 		leftStackView.addArrangedSubview(windDirection)
 		leftStackView.addArrangedSubview(windSpeed)
 		leftStackView.addArrangedSubview(minTemp)
 		leftStackView.addArrangedSubview(maxTemp)
+		
+		rightStackView.addArrangedSubview(stateName)
 		rightStackView.addArrangedSubview(airPresure)
 		rightStackView.addArrangedSubview(humidity)
 		rightStackView.addArrangedSubview(visibility)
@@ -209,10 +213,10 @@ class HeaderTableVIew: UIView {
 		stackView.topAnchor.constraint(equalTo: locationTitle.bottomAnchor, constant: Constant.spacing).isActive = true
 		stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
 		
-		rightStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: Constant.spacing).isActive = true
+		rightStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
 		rightStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -Constant.bigSpacing).isActive = true
 		
-		leftStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: Constant.spacing).isActive = true
+		leftStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
 		leftStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: Constant.bigSpacing).isActive = true
 
 		//Right Stack View

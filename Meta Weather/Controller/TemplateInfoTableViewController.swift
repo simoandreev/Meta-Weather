@@ -10,7 +10,7 @@ import UIKit
 
 class TemplateInfoTableViewController: UITableViewController {
 	private enum Constant {
-		static let cellHeight: CGFloat = 260
+		static let cellHeight: CGFloat = 230
 		
 		static let dayTitle = "Day"
 		static let createdTitle = "Created"
@@ -20,6 +20,8 @@ class TemplateInfoTableViewController: UITableViewController {
 		static let minTemperatureTitle = "Min"
 		static let inputDatedFormat = "yyyy-MM-dd'T'HH:mm:ss.SZ"
 		static let outputDatedFormat = "yyyy-MM-dd HH:mm:ss"
+		
+		static let tableViewBackgroundColor = UIColor(red: 92/255, green: 140/255, blue: 206/255, alpha: 1.0)
 	}
 	private let cellId = "DefaultTableViewCell"
 	private let weekDaysSegue = "showWeekDaysInfo"
@@ -49,6 +51,7 @@ class TemplateInfoTableViewController: UITableViewController {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+		tableView.tableFooterView = UIView()
 		tableView.register(UINib(nibName: cellId, bundle: nil), forCellReuseIdentifier: cellId)
     }
 	
@@ -95,6 +98,7 @@ class TemplateInfoTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! DefaultTableViewCell
+		cell.backgroundColor = Constant.tableViewBackgroundColor
 		let day = locations[indexPath.row]
 		cell.configure(
 			dateField: currentViewController == SelectedViewController.WeatherForecastByDays ? "\(Constant.dayTitle): \(day.applicableDate)" : "\(Constant.createdTitle): \(day.created.convertDateFormater(inputFormat: Constant.inputDatedFormat, outputFormat: Constant.outputDatedFormat))",
