@@ -10,7 +10,7 @@ import UIKit
 
 class TemplateInfoTableViewController: UITableViewController {
 	private enum Constant {
-		static let cellHeight: CGFloat = 230
+		static let cellHeight: CGFloat = 220
 		
 		static let dayTitle = "Day"
 		static let createdTitle = "Created"

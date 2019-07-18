@@ -11,7 +11,7 @@ import UIKit
 class HeaderTableVIew: UIView {
 	
 	private enum Constant {
-		static let cellHeight: CGFloat = 230
+		static let cellHeight: CGFloat = 220
 		static let imageSize: CGFloat = 40
 		static let spacing: CGFloat = 8
 		static let bigSpacing: CGFloat = 16
