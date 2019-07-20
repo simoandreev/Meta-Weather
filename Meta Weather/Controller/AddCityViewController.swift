@@ -10,9 +10,8 @@ import UIKit
 import CoreData
 import NotificationBannerSwift
 
-
 class AddCityViewController: UIViewController {
-	var location: Location?
+	
 	private enum Constant {
 		static let errorTitle = "Error"
 		static let successTitle = "Success"
@@ -21,9 +20,12 @@ class AddCityViewController: UIViewController {
 		static let alreadyExistWarrningMessage = "This city already exist, try again with another one."
 		static let doesNotExistMessage = "Does not exist data for that city, try again with another one."
 	}
-	private let persistanceManager: PersistantManager = PersistantManager()
+
+	@IBOutlet private weak var addNewCityTextField: UITextField!
 	
-	@IBOutlet weak var addNewCityTextField: UITextField!
+	private let persistanceManager: PersistantManager = PersistantManager()
+	private var location: Location?
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		self.hideKeyboardWhenTappedAround()

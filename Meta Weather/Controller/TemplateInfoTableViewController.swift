@@ -26,10 +26,17 @@ class TemplateInfoTableViewController: UITableViewController {
 		static let outputDatedFormat = "yyyy-MM-dd HH:mm:ss"
 		
 		static let tableViewBackgroundColor = UIColor(red: 92/255, green: 140/255, blue: 206/255, alpha: 1.0)
+		
+		enum CellID {
+			static let cellId = "DefaultTableViewCell"
+		}
+		
+		enum Segue {
+			static let weekDaysSegue = "showWeekDaysInfo"
+			static let hoursSegue = "showHour"
+		}
 	}
-	private let cellId = "DefaultTableViewCell"
-	private let weekDaysSegue = "showWeekDaysInfo"
-	private let hoursSegue = "showHour"
+
 	private var locations = [Day]()
 	private var day: Day?
 	
@@ -56,7 +63,7 @@ class TemplateInfoTableViewController: UITableViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		tableView.tableFooterView = UIView()
-		tableView.register(UINib(nibName: cellId, bundle: nil), forCellReuseIdentifier: cellId)
+		tableView.register(UINib(nibName: Constant.CellID.cellId, bundle: nil), forCellReuseIdentifier: Constant.CellID.cellId)
 		self.tableView.backgroundColor = Constant.tableViewBackgroundColor
 		setupRefreshControll()
     }
@@ -119,12 +126,11 @@ class TemplateInfoTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return locations.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! DefaultTableViewCell
+		let cell = tableView.dequeueReusableCell(withIdentifier: Constant.CellID.cellId, for: indexPath) as! DefaultTableViewCell
 		cell.backgroundColor = Constant.tableViewBackgroundColor
 		let day = locations[indexPath.row]
 		cell.configure(
@@ -141,7 +147,7 @@ class TemplateInfoTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		if currentViewController == SelectedViewController.WeatherForecastByDays {
 			self.day = locations[indexPath.row]
-			performSegue(withIdentifier: hoursSegue, sender: location)
+			performSegue(withIdentifier: Constant.Segue.hoursSegue, sender: location)
 		}
 	}
 	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -167,7 +173,7 @@ class TemplateInfoTableViewController: UITableViewController {
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == hoursSegue {
+		if segue.identifier == Constant.Segue.hoursSegue {
 			if let segueDestination = segue.destination as? TemplateInfoTableViewController {
 				let viewController:TemplateInfoTableViewController = segueDestination
 				viewController.day = self.day

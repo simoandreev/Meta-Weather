@@ -8,7 +8,7 @@
 
 import UIKit
 
-var vSpinner : UIView?
+private var vSpinner : UIView?
 
 extension UIViewController {
 	func showSpinner(onView : UIView) {

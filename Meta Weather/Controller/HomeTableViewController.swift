@@ -24,10 +24,16 @@ class HomeTableViewController: UITableViewController {
 		static let testTargetSelectedMessage = "Test Target selected"
 		
 		static let tableViewBackgroundColor = UIColor(red: 92/255, green: 140/255, blue: 206/255, alpha: 1.0)
+		
+		enum CellID {
+			static let homeCell = "homeCell"
+		}
+		
+		enum Segue {
+			static let weekDaysSegue = "showWeekDaysInfo"
+		}
 	}
 	private var locationsCD: [LocationCD]?
-	private let cellId = "homeCell"
-	private let weekDaysSegue = "showWeekDaysInfo"
 	private let persistanceManager: PersistantManager = PersistantManager()
 	private let reachability = Reachability()
 	private let defaultCityArray = [Location(title: "Sofia", woeid: 839722, consolidatedWeather: []),
@@ -95,7 +101,7 @@ class HomeTableViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		 let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+		 let cell = tableView.dequeueReusableCell(withIdentifier: Constant.CellID.homeCell, for: indexPath)
 		
 		cell.textLabel?.text = locationsCD?[indexPath.row].title
 		
@@ -105,7 +111,7 @@ class HomeTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let locationsCoreData = locationsCD?[indexPath.row]
 		if let locationsCoreData = locationsCoreData {
-			performSegue(withIdentifier: weekDaysSegue, sender: persistanceManager.convertToLocation(locationCD: locationsCoreData))
+			performSegue(withIdentifier: Constant.Segue.weekDaysSegue, sender: persistanceManager.convertToLocation(locationCD: locationsCoreData))
 		}
 	}
 	
@@ -129,7 +135,7 @@ class HomeTableViewController: UITableViewController {
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == weekDaysSegue {
+		if segue.identifier == Constant.Segue.weekDaysSegue {
 			if let segueDestination = segue.destination as? TemplateInfoTableViewController {
 				let viewController:TemplateInfoTableViewController = segueDestination
 				viewController.location = sender as? Location

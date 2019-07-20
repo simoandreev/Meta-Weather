@@ -10,7 +10,15 @@ import UIKit
 import CoreData
 
 class PersistantManager {
-	private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+	
+	private var context: NSManagedObjectContext {
+		guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else {
+			assert(false, "The context must be present")
+			return NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+		}
+		
+		return context
+	}
 	
 	func save(location: Location) {
 		let newItem = LocationCD(context: context)
