@@ -96,12 +96,24 @@ class HomeTableViewController: UITableViewController {
 		}
 	}
 	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == Constant.Segue.weekDaysSegue {
+			if let segueDestination = segue.destination as? TemplateInfoTableViewController {
+				let viewController:TemplateInfoTableViewController = segueDestination
+				viewController.location = sender as? Location
+				viewController.navigationItem.title = (sender as? Location)?.title
+			}
+		}
+	}
+}
+
+extension HomeTableViewController {
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return locationsCD?.count ?? 0
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		 let cell = tableView.dequeueReusableCell(withIdentifier: Constant.CellID.homeCell, for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: Constant.CellID.homeCell, for: indexPath)
 		
 		cell.textLabel?.text = locationsCD?[indexPath.row].title
 		
@@ -133,16 +145,4 @@ class HomeTableViewController: UITableViewController {
 			}
 		}
 	}
-	
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == Constant.Segue.weekDaysSegue {
-			if let segueDestination = segue.destination as? TemplateInfoTableViewController {
-				let viewController:TemplateInfoTableViewController = segueDestination
-				viewController.location = sender as? Location
-				viewController.navigationItem.title = (sender as? Location)?.title
-			}
-		}
-	}
-
 }
-

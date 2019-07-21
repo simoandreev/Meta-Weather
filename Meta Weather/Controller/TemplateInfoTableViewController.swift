@@ -22,8 +22,8 @@ class TemplateInfoTableViewController: UITableViewController {
 		static let refreshControllTitle = "Pull to refresh"
 		static let errorTitle = "Error"
 		static let successTitle = "Success"
-		static let inputDatedFormat = "yyyy-MM-dd'T'HH:mm:ss.SZ"
-		static let outputDatedFormat = "yyyy-MM-dd HH:mm:ss"
+		static let inputDateFormat = "yyyy-MM-dd'T'HH:mm:ss.SZ"
+		static let outputDateFormat = "yyyy-MM-dd HH:mm:ss"
 		
 		static let tableViewBackgroundColor = UIColor(red: 92/255, green: 140/255, blue: 206/255, alpha: 1.0)
 		
@@ -37,14 +37,13 @@ class TemplateInfoTableViewController: UITableViewController {
 		}
 	}
 
-	private var locations = [Day]()
-	private var day: Day?
-	
 	private enum SelectedViewController: String {
 		case WeatherForecastByDays = "days"
 		case WeatherForecastByHours = "hours"
 	}
-
+	
+	private var locations = [Day]()
+	private var day: Day?
 	private var currentViewController: SelectedViewController?
 	
 	var location: Location? {
@@ -62,6 +61,7 @@ class TemplateInfoTableViewController: UITableViewController {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+		
 		tableView.tableFooterView = UIView()
 		tableView.register(UINib(nibName: Constant.CellID.cellId, bundle: nil), forCellReuseIdentifier: Constant.CellID.cellId)
 		self.tableView.backgroundColor = Constant.tableViewBackgroundColor
@@ -123,27 +123,39 @@ class TemplateInfoTableViewController: UITableViewController {
 		}
 	}
 
-    // MARK: - Table view data source
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == Constant.Segue.hoursSegue {
+			if let segueDestination = segue.destination as? TemplateInfoTableViewController {
+				let viewController:TemplateInfoTableViewController = segueDestination
+				viewController.day = self.day
+				viewController.location = sender as? Location
+			}
+		}
+	}
+}
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return locations.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+extension TemplateInfoTableViewController {
+	// MARK: - Table view data source
+	
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return locations.count
+	}
+	
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: Constant.CellID.cellId, for: indexPath) as! DefaultTableViewCell
 		cell.backgroundColor = Constant.tableViewBackgroundColor
 		let day = locations[indexPath.row]
 		cell.configure(
-			dateField: currentViewController == SelectedViewController.WeatherForecastByDays ? "\(Constant.dayTitle): \(day.applicableDate)" : "\(Constant.createdTitle): \(day.created.convertDateFormater(inputFormat: Constant.inputDatedFormat, outputFormat: Constant.outputDatedFormat))",
-						  conditionField: "\(Constant.stateTitle): \(day.weatherStateName)",
-					   	maxTempField: "\(Constant.maxTemperatureTitle): \(Int(day.maxTemperature))°",
-						minTempField: "\(Constant.minTemperatureTitle): \(Int(day.minTemperature))°",
+			dateField: currentViewController == SelectedViewController.WeatherForecastByDays ? "\(Constant.dayTitle): \(day.applicableDate)" : "\(Constant.createdTitle): \(day.created.convertDateFormater(inputFormat: Constant.inputDateFormat, outputFormat: Constant.outputDateFormat))",
+			conditionField: "\(Constant.stateTitle): \(day.weatherStateName)",
+			maxTempField: "\(Constant.maxTemperatureTitle): \(Int(day.maxTemperature))°",
+			minTempField: "\(Constant.minTemperatureTitle): \(Int(day.minTemperature))°",
 			windSpeedField: "\(Constant.windDirectionTitle): \(day.windDirectionCompass)",
-						weatherConditionImage: UIImage(named: day.weatherStateAbbr))
+			weatherConditionImage: UIImage(named: day.weatherStateAbbr))
 		
-        return cell
-    }
-
+		return cell
+	}
+	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		if currentViewController == SelectedViewController.WeatherForecastByDays {
 			self.day = locations[indexPath.row]
@@ -171,15 +183,4 @@ class TemplateInfoTableViewController: UITableViewController {
 			return nil
 		}
 	}
-	
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == Constant.Segue.hoursSegue {
-			if let segueDestination = segue.destination as? TemplateInfoTableViewController {
-				let viewController:TemplateInfoTableViewController = segueDestination
-				viewController.day = self.day
-				viewController.location = sender as? Location
-			}
-		}
-	}
-
 }
